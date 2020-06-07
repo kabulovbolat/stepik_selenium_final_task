@@ -6,7 +6,6 @@ class ProductPage(BasePage):
     def add_product_to_basket(self):
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         button.click()
-        # self.solve_quiz_and_get_code()
 
     def check_for_message_product_is_added(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
@@ -23,10 +22,6 @@ class ProductPage(BasePage):
     def check_adding_message_not_present(self):
         assert self.is_not_element_present(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
             "Product adding message must be absent"
-
-    # def check_adding_message_is_disappeared(self):
-    #     assert self.is_disappeared(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
-    #         "Product adding message must be disappeared"
 
     def should_be_success_message(self):
         message = "success message is not presented, but should be"
