@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 
-class MainPageLocators():
+class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-    # LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     # VIEW_CART_BUTTON = (By.CSS_SELECTOR, "div.basket-mini a")
     # USER_ICON = (By.CLASS_NAME, "icon-user")
 
@@ -20,6 +20,7 @@ class ProductPageLocators(object):
     INFO_MESSAGE_CART_PRICE = (By.CSS_SELECTOR, "#messages div:nth-child(3) strong")
     PRODUCT_NAME = (By.CSS_SELECTOR, "div.product_main h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "div.product_main .price_color")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages > .alert-success")
 
 # class CartPageLocators(object):
 #     EMPTY_CART_MESSAGE = (By.CSS_SELECTOR, "div.content div#content_inner p")

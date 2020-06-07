@@ -20,10 +20,22 @@ class ProductPage(BasePage):
         assert product_price == cart_total_price, "Wrong cart price when added item: {} != {}"\
             .format(product_price, cart_total_price)
 
-    # def check_adding_message_not_present(self):
-    #     assert self.is_not_element_present(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
-    #         "Product adding message must be absent"
+    def check_adding_message_not_present(self):
+        assert self.is_not_element_present(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
+            "Product adding message must be absent"
 
     # def check_adding_message_is_disappeared(self):
     #     assert self.is_disappeared(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
     #         "Product adding message must be disappeared"
+
+    def should_be_success_message(self):
+        message = "success message is not presented, but should be"
+        assert self._is_element_present(*ProductPageLocators.SUCCESS_MESSAGE, timeout=1), message
+
+    def should_not_be_success_message(self):
+        message = "success message is presented, but should not be"
+        assert self._is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE, timeout=1), message
+
+    def success_message_should_disappear(self):
+        message = "success message still present, but should disappear"
+        assert self._is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), message
