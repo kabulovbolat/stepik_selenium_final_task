@@ -3,8 +3,8 @@ from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def add_product_to_cart(self):
-        button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
+    def add_product_to_basket(self):
+        button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         button.click()
         self.solve_quiz_and_get_code()
 
@@ -14,11 +14,11 @@ class ProductPage(BasePage):
         assert product_name == added_product_name, "Added item isn't equal product: {} != {} with URL: {}"\
             .format(product_name, added_product_name, self.browser.current_url)
 
-    def check_for_correct_cart_price(self):
+    def check_for_correct_basket_price(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
-        cart_total_price = self.browser.find_element(*ProductPageLocators.INFO_MESSAGE_CART_PRICE).text
-        assert product_price == cart_total_price, "Wrong cart price when added item: {} != {}"\
-            .format(product_price, cart_total_price)
+        basket_total_price = self.browser.find_element(*ProductPageLocators.INFO_MESSAGE_BASKET_PRICE).text
+        assert product_price == basket_total_price, "Wrong basket price when added item: {} != {}"\
+            .format(product_price, basket_total_price)
 
     def check_adding_message_not_present(self):
         assert self.is_not_element_present(*ProductPageLocators.INFO_MESSAGE_PRODUCT_NAME), \
